@@ -1,29 +1,26 @@
 package main
 
 import (
-	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"
 	"net/http"
 )
 
-func setGauge(name string, help string, callback func() float64) {
-	gaugeFunc := prometheus.NewGaugeFunc(prometheus.GaugeOpts{
-		Namespace: "bitcoind",
-		Subsystem: "blockchain",
-		Name:      name,
-		Help:      help,
-	}, callback)
-	prometheus.MustRegister(gaugeFunc)
-}
-
 func init() {
-	// init configs
+	InitConfig("./configs/config.yaml")
 }
 
 func main() {
+	// Init Exporter / 初始化 Exporter
+	exporter := Exporter{}
+	if err := exporter.Init(); err != nil {
+		panic(err)
+	}
+	if err := exporter.Handle("test"); err != nil {
+		panic(err)
+	}
 	listenAddr := ":8080"
 	http.Handle("/metrics", promhttp.Handler())
-	logrus.Info("Now listening on 8080")
+	logrus.Infof("Now listening on %s", listenAddr)
 	logrus.Fatal(http.ListenAndServe(listenAddr, nil))
 }

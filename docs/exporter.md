@@ -17,3 +17,22 @@ hash、
 内存池情况、
 peers、
 错误提醒、
+
+### 结构
+
+source 概念
+
+source 是一种后端的抽象、可以代表stratum server，fetcher，
+
+目前类型：
+
++ rpc 节点
++ stratum server 节点
++ 公开节点
++ 浏览器API (每 x s 获取一次数据)
+
+### 步骤
+
+1. 读取配置（或者从 apollo 读取）
+2. exporter 根据读取的配置进行转化，注册组件
+3. 
