@@ -16,7 +16,7 @@ func main() {
 	if err := exporter.Init(); err != nil {
 		panic(err)
 	}
-	if err := exporter.Handle("test"); err != nil {
+	if err := exporter.Register(); err != nil {
 		panic(err)
 	}
 	listenAddr := ":8080"

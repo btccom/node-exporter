@@ -1,9 +1,9 @@
-package stratum
+package ss
 
 import (
-	"github.com/btccom/node-exporter/sources/stratum/btc"
-	"github.com/btccom/node-exporter/sources/stratum/ckb"
-	"github.com/btccom/node-exporter/sources/stratum/dcr"
+	"github.com/btccom/node-exporter/sources/ss/btc"
+	"github.com/btccom/node-exporter/sources/ss/ckb"
+	"github.com/btccom/node-exporter/sources/ss/dcr"
 )
 
 func ParseHeight(coin string, resp interface{}) (height int64, err error) {

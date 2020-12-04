@@ -10,5 +10,19 @@ type rPeersSource struct {
 }
 
 func (r *rPeersSource) Handle() {
+}
 
+type PublicNodeCollector struct {
+}
+
+func (n PublicNodeCollector) Describe(chan<- *prometheus.Desc) {
+	panic("implement me")
+}
+
+func (n PublicNodeCollector) Collect(chan<- prometheus.Metric) {
+	panic("implement me")
+}
+
+func NewPublicNodeCollector() PublicNodeCollector {
+	return PublicNodeCollector{}
 }

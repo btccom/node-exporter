@@ -1,4 +1,4 @@
-package stratum
+package ss
 
 import (
 	"bufio"
