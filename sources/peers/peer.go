@@ -34,7 +34,7 @@ func NewNodePeer(address string, coin string) *NodePeer {
 	return &b
 }
 
-// connect
+// Connect
 func (b *NodePeer) Connect() error {
 	if b.conn != nil {
 		return fmt.Errorf("peer already connected, can't connect again")
@@ -47,7 +47,7 @@ func (b *NodePeer) Connect() error {
 	return nil
 }
 
-// disconnect
+// DisConnect
 func (b *NodePeer) DisConnect() {
 	if b.conn == nil {
 		return
@@ -95,7 +95,7 @@ func (b *NodePeer) Handshake() (result Result, err error) {
 	return
 }
 
-// send getaddr command
+// SendGetAddr send getaddr command
 func (b *NodePeer) SendGetAddr() error {
 	err := b.WriteMessage(wire.NewMsgGetAddr())
 	return err

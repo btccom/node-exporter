@@ -31,6 +31,7 @@ type StratumServersParam struct {
 	Region       string
 }
 
+// StratumServer
 // by https://github.com/decred/gominer
 // stratum server
 type StratumServer struct {
@@ -52,6 +53,7 @@ const ConnFailureLimitCount = 15
 
 var errJsonType = errors.New("unexpected type in json")
 
+// Start
 // start the monitor
 func (p *StratumServer) Start() {
 	for {
@@ -70,6 +72,7 @@ func (p *StratumServer) Start() {
 	p.wg.Wait()
 }
 
+// Connect
 // connect to stratum server
 func (p *StratumServer) Connect(limit int) error {
 	err := p.Dial()
@@ -160,6 +163,7 @@ func (p *StratumServer) Auth() {
 	p.WriteConn(msg)
 }
 
+// WriteConn
 // Write a message to the connection
 func (p *StratumServer) WriteConn(msg interface{}) {
 	m, err := json.Marshal(msg)
@@ -175,6 +179,7 @@ func (p *StratumServer) WriteConn(msg interface{}) {
 	}
 }
 
+// Listen
 // Long connection event listening
 func (p *StratumServer) Listen() {
 	defer p.wg.Done()
@@ -402,7 +407,7 @@ func (p *StratumServer) Unmarshal(blob []byte) (interface{}, error) {
 	}
 }
 
-// build notify jobs response.
+// BuildNotifyRes build notify jobs response.
 func (p *StratumServer) BuildNotifyRes(res []interface{}) (NotifyRes, error) {
 	var nres = NotifyRes{}
 	var ok bool

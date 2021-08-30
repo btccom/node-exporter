@@ -22,7 +22,7 @@ func (m *Exporter) Init() error {
 	return nil
 }
 
-// Handle 处理实际的
+// Register 处理实际的
 func (m *Exporter) Register() error {
 	// 初始化各种源，根据各种源构造 Collector 以及注册
 	for _, item := range Config.Sources {
