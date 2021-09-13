@@ -6,13 +6,15 @@ import (
 	"net/http"
 )
 
+var Version = "1.0.0"
+
 func init() {
 	InitConfig("./configs/config.yaml")
 }
 
 func main() {
 	// Init Exporter / 初始化 Exporter
-	exporter := Exporter{}
+	exporter := newExporter()
 	if err := exporter.Init(); err != nil {
 		panic(err)
 	}

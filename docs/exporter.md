@@ -22,14 +22,14 @@ peers、
 
 source 概念
 
-source 是一种后端的抽象、可以代表stratum server，fetcher，
+source 是一种后端的抽象、可以代表stratum server
 
 目前类型：
 
 + rpc 节点
 + stratum server 节点
 + 公开节点
-+ 浏览器API (每 x s 获取一次数据)
++ 浏览器API
 
 ### 步骤
 

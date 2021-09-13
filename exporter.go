@@ -17,6 +17,10 @@ const (
 type Exporter struct {
 }
 
+func newExporter() Exporter {
+	return Exporter{}
+}
+
 func (m *Exporter) Init() error {
 	logrus.Info(Config.Name)
 	return nil
@@ -31,7 +35,7 @@ func (m *Exporter) Register() error {
 			prometheus.MustRegister(c)
 		}
 		if item.Type == CollectorTypeRPCName {
-			c := rpc.NewStratumServerCollector()
+			c := rpc.NewNodeDaemonCollector()
 			prometheus.MustRegister(c)
 		}
 		if item.Type == CollectorTypePeerName {
